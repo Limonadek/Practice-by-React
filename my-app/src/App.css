@@ -1,0 +1,75 @@
+.inputEdit {
+    margin-top: 0;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding-left: 4%;
+    width: 60%;
+}
+
+.salonsBlock {
+    margin-left: 7%;
+}
+
+body {
+    background-color: aqua;
+}
+.mainBlock {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    margin-bottom: 0%;
+    margin-top: 3%;
+    border: 3px solid slategray;
+    border-radius: 6px;
+    width: 900px;
+}
+
+.getSalons {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding-bottom: 2%;
+    width: 800px;
+}
+
+.getCars {
+    width: 600px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8%;
+    padding-left: 9%;
+}
+
+.inputBackground {
+    background-color: white;
+}
+
+.postSalon {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding-bottom: 2%;
+    width: 540px;
+    height: 60px;
+    border: 3px solid green;
+    display: block;
+}
+
+.centerText {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+
+.centerText2 {
+    margin-left: 37%;
+    margin-right: auto;
+}
+
+.centerText3 {
+    margin-left: 30%;
+    margin-right: auto;
+}
