@@ -21,7 +21,6 @@ class CarAndBuyer {
         this.price = price;
     }
 
-    // поиск по двум индексам
     async getMateriz() {
         try {
             const res = await pool.query("select * from car_and_buyer where buyer_age > 30 and vehicle_condition = 'new';");

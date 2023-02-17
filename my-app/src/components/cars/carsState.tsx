@@ -13,11 +13,10 @@ interface Cars {
     price: string
 }
 
-//делаем класс наблюдаемым(чтобы реакт умей следить за состоянием)
 class CarsState {
     cars: Cars[] = []
     constructor() {
-        makeAutoObservable(this) //этот метод позволяет реакту следить за состоянием класса
+        makeAutoObservable(this);
     }
 
     changeBuyerName(id: string, buyerName: string) {
@@ -47,21 +46,11 @@ class CarsState {
     feathCars = async () => {
         const response = await fetch("http://127.0.0.1:4002/materization")
         const saonsFromApi = await response.json()
-        console.log(saonsFromApi)
 
         runInAction(() => {
             this.cars = saonsFromApi;
         })
     }
-
-    // changeLocationSalon(id: string, location: string) {
-    //     this.salons.find(cust => cust.id === id)!.location = location;
-    // }
-
-    // changeCategorySalon(id: string, category: string) {
-    //     this.salons.find(cust => cust.id === id)!.category = category;
-    // }
-
 
 }
 

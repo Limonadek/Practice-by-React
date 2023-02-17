@@ -2,8 +2,7 @@ import { IconButton, TextField } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import SaveIcon from "@mui/icons-material/Save"
 import { observer } from "mobx-react-lite"
-import { useContext, useEffect, useState } from "react"
-// import styles from "../../App.module.css" //импортируем файл cssthis
+import { useContext } from "react"
 import { salonsState } from "./salonsState"
 
 interface SalonsProps {
@@ -17,14 +16,6 @@ export const Salon = observer(({ id }: SalonsProps) => {
     return (
         <div className="salonsBlock">
             <p>Имя салона</p>
-            {/* <input
-                disabled={context.saveState}
-                className={[styles.inputEdit, "form-control"].join(" ")}
-                value={salon.name}
-                onChange={event => {
-                    context.changeNameSalon(salon.id, event.target.value)
-                }}
-                /> */}
             <TextField
                 label='Имя'
                 variant='outlined'
@@ -37,14 +28,6 @@ export const Salon = observer(({ id }: SalonsProps) => {
             />
 
             <p>Локация салона</p>
-            {/* <input
-                disabled={context.saveState}
-                className={[styles.inputEdit, "form-control"].join(" ")}
-                value={salon.location}
-                onChange={event => {
-                    context.changeLocationSalon(salon.id, event.target.value)
-                }}
-            /> */}
             <TextField
                 label='Локация'
                 variant='outlined'
@@ -57,14 +40,6 @@ export const Salon = observer(({ id }: SalonsProps) => {
             />
 
             <p>Категория салона</p>
-            {/* <input
-                disabled={context.saveState}
-                className={[styles.inputEdit, "form-control"].join(" ")}
-                value={salon.category}
-                onChange={event => {
-                    context.changeCategorySalon(salon.id, event.target.value)
-                }}
-            /> */}
             <TextField
                 label='Категория'
                 variant='outlined'
@@ -75,16 +50,6 @@ export const Salon = observer(({ id }: SalonsProps) => {
                     context.changeCategorySalon(salon.id, event.target.value)
                 }}
             />
-            {/* <button
-                disabled={context.saveState}
-                onClick={async () => {
-                    const update = await context.updateSalon(salon.id)
-                    if (update) alert("Обновление прошло успешно")
-                    else alert("Не удалось обновить")
-                }}
-            >
-                Обновить
-            </button> */}
 
             <IconButton aria-label='save'
                 disabled={context.saveState}
@@ -96,19 +61,6 @@ export const Salon = observer(({ id }: SalonsProps) => {
             >
                 <SaveIcon />
             </IconButton>
-
-            {/* <button
-                disabled={context.saveState}
-                onClick={async () => {
-                    if (window.confirm("Удалить?")) {
-                        const deleted = await context.deleteSalon(salon.id)
-                        if (deleted) alert("Удален")
-                        else alert("Не удалился")
-                    }
-                }}
-            >
-                Удалить
-            </button> */}
 
             <IconButton aria-label='delete'
                 disabled={context.saveState}
@@ -122,7 +74,6 @@ export const Salon = observer(({ id }: SalonsProps) => {
             >
                 <DeleteIcon />
             </IconButton>
-            <p></p>
         </div>
     )
 })

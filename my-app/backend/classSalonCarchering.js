@@ -82,7 +82,9 @@ class SalonCarchering {
 
     async deleteSalon(id) {
         try {
-            await pool.query("DELETE FROM salon_carsharing WHERE id = $1", [id])
+            await pool.query("UPDATE car SET fk_id = null WHERE fk_id = $1 returning fk_id;", [id])
+            await pool.query("DELETE FROM salon_carsharing WHERE id = $1;", [id])
+
             return "ok"
         } catch (error) {
             console.log(error)

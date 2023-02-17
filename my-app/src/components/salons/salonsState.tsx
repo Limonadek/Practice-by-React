@@ -9,17 +9,16 @@ interface Salons {
 }
 
 
-//делаем класс наблюдаемым(чтобы реакт умей следить за состоянием)
 class SalonsState {
     loadState: 'pending' | 'success' | 'error' = 'pending'
     saveState = false;
     salons: Salons[] = []
     constructor() {
-        makeAutoObservable(this) //этот метод позволяет реакту следить за состоянием класса
+        makeAutoObservable(this)
     }
 
     changeNameSalon(id: number, names: string) {
-        this.salons.find(cust => cust.id === id)!.name = names; //! знак говорит typeScript что мы уверены что есть такой элемент
+        this.salons.find(cust => cust.id === id)!.name = names;
     }
 
     changeLocationSalon(id: number, location: string) {
@@ -33,16 +32,12 @@ class SalonsState {
     feathSalons = async () => {
         this.loadState = 'pending';
 
-
-        //асинхронный запрос
         try {
             const response = await fetch("http://127.0.0.1:4002/salons")
-            const saonsFromApi = await response.json()
-            console.log(saonsFromApi)
-    
-            // позволяет обновить State после асинхроного запроса
+            const salonsFromAli = await response.json()
+
             runInAction(() => {
-                this.salons = saonsFromApi;
+                this.salons = salonsFromAli;
                 this.loadState = 'success'
             })
         } catch (err) {
@@ -54,7 +49,6 @@ class SalonsState {
     }
 
     async createSalon() {
-        // const newId = Math.max(...this.salons.map(h => Number(h.id)))
         const res = await fetch(`http://127.0.0.1:4002/create`, {
             method: "POST",
             headers: {
@@ -102,30 +96,23 @@ class SalonsState {
 
 
     async deleteSalon(id: number) {
-
-        // if (window.confirm("Удалить?")) {
-            const res = await fetch(`http://127.0.0.1:4002/delete/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-                // body: JSON.stringify(salon)
-            })
-
-            if (res.ok) {
-
-                runInAction(() => {
-                    this.salons = this.salons.filter(h => h.id !== id)
-                })
-                return true
-
-                // const newSalons = salons.filter(h => h.id !== salon.id)
-                // setSalons(JSON.parse(JSON.stringify(newSalons)))
-                // alert("Удалено")
-            } else {
-                return false
+        const res = await fetch(`http://127.0.0.1:4002/delete/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
             }
-        // }
+        })
+
+        if (res.ok) {
+
+            runInAction(() => {
+                this.salons = this.salons.filter(h => h.id !== id)
+            })
+            return true
+
+        } else {
+            return false
+        }
     }
     
 
