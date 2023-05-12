@@ -16,4 +16,4 @@ REDIS_PORT=26599
 APP_PORT=4002
 ```
 - Находясь в папке backend выполнить команду(в зависимости от версии docker-compose) docker-compose up --build или docker compose up --build
-- Находясь в папке my-app выполнить команду npm run start
+- Находясь в папке my-app выполнить команду npm install и следом npm run start
